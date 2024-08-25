@@ -2,17 +2,19 @@ pipeline {
     agent any
 
     stages {
-        stage('Use artifacts from other job') {
+        stage('Use Artifacts') {
             steps {
-                // Copy artifacts from another job
+                // Copy artifacts from Job 1
                 copyArtifact(
-                    projectName: 'OTHER_JOB_NAME',
-                    filter: 'artifact.txt'
+                    projectName: '10.groovy',
+                    filter: 'artifact.txt, artifact2.txt'
                 )
 
-                // Use the artifacts in your current job
+                // Use the artifacts
                 sh 'cat artifact.txt'
+                sh 'cat artifact2.txt'
             }
         }
     }
 }
+
