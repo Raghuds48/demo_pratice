@@ -24,7 +24,7 @@ pipeline {
                     echo "Custom build display name: ${currentBuild.displayName}"
                     
                     // Create some files to archive
-                    sh 'echo "Hello World" > artifact.txt'
+                    sh 'cho "Hello World" > artifact.txt'
                     sh 'echo "This is another artifact" > artifact2.txt'
 
                     // Archive the files
