@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM centos:latest
 
 # Set the working directory in the image
 WORKDIR /app
@@ -7,7 +7,7 @@ WORKDIR /app
 COPY . /app
 
 # Install the necessary packages
-RUN apt-get update && apt-get install -y python3 python3-pip
+RUN yum update -y && yum install -y python3 python3-pip
 
 # Set environment variables
 ENV NAME World
