@@ -21,7 +21,7 @@ pipeline{
     stage('Deploy') {
       steps{
         sh '''
-        Docker container run -d --name c1 -p 9000:80 app_image:1.0
+        docker container run -d --name c1 -p 9000:80 app_image:1.0
         echo "Deploy Docker image on `hostname`"
         '''
          }
