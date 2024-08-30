@@ -5,10 +5,11 @@ pipeline {
            steps{
       
              sh '''
-              mkdir raghu19 && cd raghu19
+              mkdir raghu20 && cd raghu20
              git clone --bare https://github.com/Raghuds48/duplicate-repo-history.git
              ls
              cd duplicate-repo-history.git
+             ls
              git  push --mirror https://github.com/Raghuds48/wisecow.git
              '''
            }
