@@ -4,7 +4,7 @@ pipeline {
     stage('build') {
        steps{
         sh '''
-        echo " Build is succesful on my 'hostname'"
+        echo " Build is succesful on my `hostname`"
        '''
       }
 }
@@ -12,14 +12,14 @@ pipeline {
      stage('test') {
 steps{
         sh '''
-        echo " test is succesful on my 'hostname'"
+        echo " test is succesful on my `hostname`"
        '''
       }
 }
    stage('deploy') {
 steps{
         sh '''
-        echo " deploy is succesful on my 'hostname'"
+        echo " deploy is succesful on my `hostname`"
        '''
       }
 }
