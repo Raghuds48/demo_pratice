@@ -6,6 +6,7 @@ pipeline {
         echo " Build is succesful on my 'hostname'"
        '''
       }
+
      stage('test') {
         sh '''
         echo " test is succesful on my 'hostname'"
