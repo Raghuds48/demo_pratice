@@ -11,16 +11,16 @@ pipeline {
 
      stage('test') {
 steps{
-        sh '''
+        sh '
         echo " test is succesful on my 'hostname'"
-       '''
+       '
       }
 }
    stage('deploy') {
 steps{
-        sh '''
+        sh '
         echo " deploy is succesful on my 'hostname'"
-       '''
+       '
       }
 }
   }
