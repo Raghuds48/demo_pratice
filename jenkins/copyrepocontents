@@ -4,11 +4,18 @@ pipeline {
         stage('copy Repository contents') {
             steps {
                 script {
+                    // Remove the existing directory if it exists
+                    sh '''
+                    if [ -d "duplicate-repo-history.git" ]; then
+                        rm -rf duplicate-repo-history.git
+                    fi
+                    '''
+                    
                     // Clone the repository
                     sh 'git clone --bare https://github.com/Raghuds48/duplicate-repo-history.git'
                     
                     // Use 'dir' to set the working directory for subsequent steps
-                    dir('duplicate-repo-history') {
+                    dir('duplicate-repo-history.git') {
                         // List contents to verify
                         sh 'ls'
                         
