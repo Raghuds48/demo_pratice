@@ -1,0 +1,20 @@
+pipeline {
+      agent any 
+     stages{
+    stage('build') {
+        sh '''
+        echo " Build is succesful on my 'hostname'"
+       '''
+      }
+     stage('test') {
+        sh '''
+        echo " test is succesful on my 'hostname'"
+       '''
+      }
+   stage('deploy') {
+        sh '''
+        echo " deploy is succesful on my 'hostname'"
+       '''
+      }
+  }
+}
