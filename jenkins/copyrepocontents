@@ -1,18 +1,18 @@
 pipeline {
-       agent any
-       stages {
-         stage('copy Repositery contents') {
-           steps{
-      
-             sh '''
-              mkdir raghu20 && cd raghu20
-             git clone --bare https://github.com/Raghuds48/duplicate-repo-history.git
-             ls
-             cd duplicate-repo-history.git
-             ls
-             git  push --mirror https://github.com/Raghuds48/wisecow.git
-             '''
-           }
-         }
-       }
+    agent any
+
+    stages {
+        stage('Copy Repository Contents') {
+            steps {
+                // Checkout the source repository
+                git url: 'https://github.com/Raghuds48/duplicate-repo-history.git', branch: 'master'
+
+                // Add the destination repository as a remote
+                sh 'git remote add destination https://github.com/Raghuds48/wisecow.git'
+
+                // Push the contents to the destination repository
+                sh 'git push -u destination master'
+            }
+        }
+    }
 }
