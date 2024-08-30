@@ -21,7 +21,7 @@ pipeline{
     stage('Deploy') {
       steps{
         sh '''
-        docker container run -d --name c1 -p 9000:80 app_image:1.0
+        docker container run -it --rm --name c1 app_image:1.0 /bin/bash
         echo "Deploy Docker image on `hostname`"
         '''
          }
@@ -33,6 +33,20 @@ pipeline{
                                  '''
                          }
                  }
+     stage('clean_up'){
+                        steps{
+                                sh '''
+                                  docker container ls -a | grep c1
+                                  if [ $? == 0 ] ; then 
+                                  docker container rm -f c1; 
+                                  fi
+
+                                  docker image rm app_image:1.0
+                                '''
+                        }
+                 }
+
+   
           }  
   
 }
