@@ -3,10 +3,9 @@ pipeline {
        stages {
          stage('copy Repositery contents') {
            steps{
-        
+      
              sh '''
-             mkdir Raghu2 && cd Raghu2
-             git clone --bare https://github.com/Raghuds48/duplicate-repo-history.git
+              mkdir /root/raghu/checkout git clone --bare https://github.com/Raghuds48/duplicate-repo-history.git
              ls
              cd duplicate-repo-history
              git  push --mirror https://github.com/Raghuds48/wisecow.git
