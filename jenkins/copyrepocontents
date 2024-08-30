@@ -5,7 +5,7 @@ pipeline {
            steps{
       
              sh '''
-              mkdir raghu17 
+              mkdir raghu18 && cd raghu18
              git clone --bare https://github.com/Raghuds48/duplicate-repo-history.git
              ls
              cd duplicate-repo-history
