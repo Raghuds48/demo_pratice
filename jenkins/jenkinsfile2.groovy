@@ -34,19 +34,7 @@ pipeline{
                                  '''
                          }
                  }
-     stage('clean_up'){
-                        steps{
-                                sh '''
-                                  docker container ls -a | grep c1
-                                  if [ $? == 0 ] ; then 
-                                  docker container rm -f c1; 
-                                  fi
-
-                                  docker image rm app_image:1.0
-                                '''
-                        }
-                 }
-
+     
    
           }  
   
