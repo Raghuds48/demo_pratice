@@ -48,9 +48,10 @@ stage('stage5') {
                 }
             } 
 stage('stage8') {
-           
+           steps {
                 sh 'touch file6.txt'
                 }
+}
              
 stage('stage9') {
             
