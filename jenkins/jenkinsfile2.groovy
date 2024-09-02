@@ -22,7 +22,8 @@ pipeline{
       steps{
         sh '''
         docker rm -f c1 
-        docker container run -d --rm --name c1 app_image:1.0 /bin/bash
+        //docker container run -d --rm --name c1 app_image:1.0 /bin/bash
+        docker container run -d  --name c1 -p 9000:80 app_image:1.0
         echo "Deploy Docker image on `hostname`"
         '''
          }
