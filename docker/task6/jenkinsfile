@@ -5,7 +5,7 @@ pipeline {
         stage('Create Image') {
             steps {
                 sh '''
-            docker image build -t app-image:1.0 ${WORKSPACE}/docker/task6'
+            docker image build -t app-image:1.0 ${WORKSPACE}/docker/task6
                 '''
             }
         }
@@ -18,15 +18,20 @@ pipeline {
         stage('Push Image to Docker Hub') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
-                    sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
-                    sh 'docker push raghavendrasak78/app-image:1.0'
+                    sh '''
+                 docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+                    docker push raghavendrasak78/app-image:1.0 
+                    '''
+
                 }
             }
         }
         stage('Pull Image on Slave Machine') {
             steps {
                 sshagent(['slave-machine-credentials']) {
-                    sh 'ssh slave-machine docker pull raghavendrasak78/app-image:1.0''
+                    sh '''
+               ssh slave-machine docker pull raghavendrasak78/app-image:1.0
+                   '''
                 }
             }
         }
