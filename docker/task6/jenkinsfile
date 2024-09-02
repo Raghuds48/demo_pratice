@@ -11,7 +11,9 @@ pipeline {
         }
         stage('Tag Image') {
             steps {
-                sh 'docker image tag app-image:latest raghavendrasak78/app-image:1.0'
+                sh '''
+       docker image tag app-image:latest raghavendrasak78/app-image:1.0
+       '''
 
             }
         }
@@ -25,15 +27,7 @@ pipeline {
 
                 }
             }
-        }
-        stage('Pull Image on Slave Machine') {
-            steps {
-                sshagent(['slave-machine-credentials']) {
-                    sh '''
-              docker iamge ls
-                   '''
-                }
-            }
+        
         }
     }
 }
